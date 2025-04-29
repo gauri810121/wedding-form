@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Photography Inquiry</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f8f8f8;
+    }
+    .form-box {
+      background: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: 40px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+    .form-box h2 {
+      text-align: center;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: #333;
+      cursor: pointer;
+    }
+    .buttons button:first-child {
+      background-color: #ccc;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <img src="your-image-url.jpg" alt="Wedding" style="width:100%; border-radius: 10px;">
+  <h2>Hire Award Winning Wedding Photographers</h2>
+  <p style="text-align: center;">Share your event details.<br>Your contact details are safe with us & we don’t spam.</p>
+  <form id="weddingForm">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="contact" placeholder="Contact Number" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Anything you wanna mention"></textarea>
+    <div class="buttons">
+      <button type="reset">Previous</button>
+      <button type="submit">Send</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById("weddingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = {
+      name: this.name.value,
+      contact: this.contact.value,
+      email: this.email.value,
+      message: this.message.value
+    };
+    fetch("YOUR_WEB_APP_URL", {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(response => alert("Details submitted successfully!"))
+    .catch(error => alert("Something went wrong!"));
+  });
+</script>
+
+</body>
+</html>
